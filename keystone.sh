@@ -1,7 +1,7 @@
 #! /bin/bash
 KEYSTONE_DBNAME=keystone
 KEYSTONE_DBPASS=xiandao2015
-
+MYSQL_HOST=127.0.0.1
 function mysql_cmd() {
 	mysql -uroot -p$MYSQL_PASSWORD -h$MYSQL_HOST -e "$@"
 }
@@ -18,7 +18,7 @@ function install_keystone {
 	sudo apt-get install -y python-mysqldb memcached python-memcache keystone apache2 libapache2-mod-wsgi python-openstackclient
 }
 
-SCRIPT_PATH = ./
+SCRIPT_PATH=./
 function config_keystone {
 	sudo cp $SCRIPT_PATH/keystone.conf /etc/keystone/keystone.conf
 }
@@ -32,7 +32,7 @@ function config_mod-wsgi_keystone {
 	sudo ln -s /etc/apache2/sites-available/wsgi-keystone.conf /etc/apache2/sites-enabled
 	sudo mkdir -p /var/www/cgi-bin/keystone
 	sudo cp $SCRIPT_PATH/keystone-wsgi-admin /var/www/cgi-bin/keystone/admin
-	sudo cp $SCRIPT_PATH/keystone-wsgi-public /var/www/cgi-bin/keystone/main
+	sudo cp $SCRIPT_PATH/keystone-wsgi-main /var/www/cgi-bin/keystone/main
 	sudo chown -R keystone:keystone /var/www/cgi-bin/keystone
 	sudo chmod 755 /var/www/cgi-bin/keystone/*
 
