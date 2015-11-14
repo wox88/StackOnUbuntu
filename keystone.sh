@@ -18,8 +18,13 @@ function install_keystone {
 	sudo apt-get install -y python-mysqldb memcached python-memcache keystone apache2 libapache2-mod-wsgi python-openstackclient
 }
 
+SCRIPT_PATH = ./
 function config_keystone {
+	sudo cp $SCRIPT_PATH/keystone.conf /etc/keystone/keystone.conf
+}
 
+function keystone_dbsync {
+	sudo keystone-manage db_sync
 }
 
 function config_mod-wsgi_keystone {

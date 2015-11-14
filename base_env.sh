@@ -35,3 +35,6 @@ function install_rabbit {
 	# Set privileges of openstack
 	sudo rabbitmqctl set_permissions $RABBITMQ_USER ".*" ".*" ".*"
 }
+
+install_mysql
+install_rabbit
