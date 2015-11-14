@@ -14,7 +14,8 @@ KEYSTONE_DBNAME=keystone
 KEYSTONE_DBPASS=xiandao2015
 MYSQL_HOST=127.0.0.1
 
-sudo add-apt-repository cloud-archive:liberty
+sudo add-apt-repository -y cloud-archive:liberty
+sudo apt-get update
 
 source $SCRIPT_PATH/database
 source $SCRIPT_PATH/keystone
