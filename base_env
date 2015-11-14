@@ -1,0 +1,22 @@
+#! /bin/bash
+SCRIPT_PATH=./
+
+MYSQL_HOST=127.0.0.1
+MYSQL_USER=root
+MYSQL_PASSWORD=xiandao2015
+MYSQL_CONN=mysql://$MYSQL_USER:$MYSQL_PASSWORD@$MYSQL_HOST
+
+RABBITMQ_HOST=127.0.0.1
+RABBITMQ_USER=openstack
+RABBITMQ_PASSWORD=xiandao2015
+
+KEYSTONE_DBNAME=keystone
+KEYSTONE_DBPASS=xiandao2015
+MYSQL_HOST=127.0.0.1
+
+sudo add-apt-repository cloud-archive:liberty
+
+source $SCRIPT_PATH/database
+source $SCRIPT_PATH/keystone
+
+

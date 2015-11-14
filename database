@@ -1,10 +1,5 @@
 #!/bin/bash
 
-MYSQL_HOST=127.0.0.1
-MYSQL_USER=root
-MYSQL_PASSWORD=xiandao2015
-MYSQL_CONN=mysql://$MYSQL_USER:$MYSQL_PASSWORD@$MYSQL_HOST
-
 function install_mysql {
 	#install mysql in silent
 	sudo debconf-set-selections <<MYSQL_PRESEED
@@ -21,9 +16,9 @@ MYSQL_PRESEED
 root'@'localhost' identified by '$MYSQL_PASSWORD ' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 }
 
-RABBITMQ_HOST=127.0.0.1
-RABBITMQ_USER=openstack
-RABBITMQ_PASSWORD=xiandao2015
+function mysql_cmd() {
+	mysql -uroot -p$MYSQL_PASSWORD -h$MYSQL_HOST -e "$@"
+}
 
 function install_rabbit {
 	# Install rabbitmq server
@@ -35,6 +30,3 @@ function install_rabbit {
 	# Set privileges of openstack
 	sudo rabbitmqctl set_permissions $RABBITMQ_USER ".*" ".*" ".*"
 }
-
-install_mysql
-install_rabbit

@@ -1,10 +1,4 @@
 #! /bin/bash
-KEYSTONE_DBNAME=keystone
-KEYSTONE_DBPASS=xiandao2015
-MYSQL_HOST=127.0.0.1
-function mysql_cmd() {
-	mysql -uroot -p$MYSQL_PASSWORD -h$MYSQL_HOST -e "$@"
-}
 
 function mysql_add_keystone {
 	mysql_cmd "CREATE DATABASE $KEYSTONE_DBNAME;"
@@ -18,7 +12,6 @@ function install_keystone {
 	sudo apt-get install -y python-mysqldb memcached python-memcache keystone apache2 libapache2-mod-wsgi python-openstackclient
 }
 
-SCRIPT_PATH=./
 function config_keystone {
 	sudo cp $SCRIPT_PATH/keystone.conf /etc/keystone/keystone.conf
 }
