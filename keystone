@@ -48,6 +48,6 @@ function create_service_and_endpoint {
 	#Demo Project
 	create_project demo "Demo Project"
 	create_user demo $DEMO_PASSWORD
-	create_role demo
+	create_role user
 	add_user_project_role demo demo user
 }

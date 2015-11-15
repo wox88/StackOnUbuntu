@@ -10,9 +10,9 @@ function create_endpoint {
 	openstack endpoint create --publicurl $3 --internalurl $5 --adminurl $4 --region $2 $1
 }
 
-#Usage: create_project <service> <description>
+#Usage: create_project <project> <description>
 function create_project {
-	openstack project create --description $2 $1
+	openstack project create --description "$2" $1
 }
 
 #Usage create_user <user> <passwd>
