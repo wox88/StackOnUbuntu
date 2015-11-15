@@ -31,3 +31,23 @@ function config_mod-wsgi_keystone {
 
 	sudo service apache2 restart
 }
+
+function create_service_and_endpoint {
+	create_service keystone identity "OpenStack Identity"
+	create_endpoint identity RegionOne $PUBLICURL $ADMINURL $INTERNALURL
+	
+	# Admin Project
+	create_project admin "Admin Project"
+	create_user admin $ADMIN_PASSWORD
+	create_role admin
+	add_user_project_role admin admin admin
+
+	#Service Project
+	create_project service "Service Project"
+	
+	#Demo Project
+	create_project demo "Demo Project"
+	create_user demo $DEMO_PASSWORD
+	create_role demo
+	add_user_project_role demo demo user
+}

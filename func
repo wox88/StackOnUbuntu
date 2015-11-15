@@ -2,7 +2,7 @@
 
 # Usage: create_service <name> <type> <description>
 function create_service {
-	openstack service create --type $2 --description="$3" --name $1
+	openstack service create --description="$3" --name $1 $2 
 }
 
 # Usage: create_endpoint <service> <region> <publicurl> <adminurl> <internalurl>

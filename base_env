@@ -14,10 +14,17 @@ KEYSTONE_DBNAME=keystone
 KEYSTONE_DBPASS=xiandao2015
 MYSQL_HOST=127.0.0.1
 
+PUBLICURL=http://localhost:5000/v2.0
+ADMINURL=http://localhost:35357/v2.0
+INTERNALURL=http://localhost:5000/v2.0
+ADMIN_PASSWORD=xiandao2015
+DEMO_PASSWORD=xiandao2015
+
 sudo add-apt-repository -y cloud-archive:liberty
 sudo apt-get update
 
 source $SCRIPT_PATH/database
+source $SCRIPT_PATH/func
 source $SCRIPT_PATH/keystone
 
 
