@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Usage: create_service <name> <type> <description>
+function create_service {
+	openstack service create --type $2 --description="$3" --name $1
+}
+
+# Usage: create_endpoint <service> <region> <publicurl> <adminurl> <internalurl>
+function create_endpoint {
+	openstack endpoint create --publicurl $3 --internalurl $5 --adminurl $4 --region $2 $1
+}
+
+#Usage: create_project <service> <description>
+function create_project {
+	openstack project create --description $2 $1
+}
+
+#Usage create_user <user> <passwd>
+function create_user {
+	openstack user create --password $2 $1
+}
+
+#Usage create_role <role>
+function create_role {
+	openstack role create $1
+}
+
+#Usage add_user_project_role <user> <project> <role>
+function add_user_project_role {
+	openstack role add --project $2 --user $1 $3
+}
+
+
+
