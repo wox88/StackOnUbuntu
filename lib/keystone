@@ -13,19 +13,16 @@ function install_keystone {
 }
 
 function config_keystone {
-	sudo cp $SCRIPT_PATH/keystone.conf /etc/keystone/keystone.conf
-}
-
-function keystone_dbsync {
+	sudo cp $TEMPLATE_PATH/keystone.conf /etc/keystone/keystone.conf
 	sudo keystone-manage db_sync
 }
 
 function config_mod-wsgi_keystone {
-	sudo cp $SCRIPT_PATH/wsgi-keystone.conf.template /etc/apache2/sites-available/wsgi-keystone.conf
-	sudo ln -s /etc/apache2/sites-available/wsgi-keystone.conf /etc/apache2/sites-enabled
+	sudo cp $TEMPLATE_PATH/wsgi-keystone.conf.template /etc/apache2/sites-available/wsgi-keystone.conf 
+	sudo ln -s /etc/apache2/sites-available/wsgi-keystone.conf /etc/apache2/sites-enabled 
 	sudo mkdir -p /var/www/cgi-bin/keystone
-	sudo cp $SCRIPT_PATH/keystone-wsgi-admin /var/www/cgi-bin/keystone/admin
-	sudo cp $SCRIPT_PATH/keystone-wsgi-main /var/www/cgi-bin/keystone/main
+	sudo cp $TEMPLATE_PATH/keystone-wsgi-admin /var/www/cgi-bin/keystone/admin
+	sudo cp $TEMPLATE_PATH/keystone-wsgi-public /var/www/cgi-bin/keystone/main
 	sudo chown -R keystone:keystone /var/www/cgi-bin/keystone
 	sudo chmod 755 /var/www/cgi-bin/keystone/*
 
