@@ -31,7 +31,7 @@ function config_mod-wsgi_keystone {
 
 function create_service_and_endpoint {
 	create_service keystone identity "OpenStack Identity"
-	create_endpoint identity RegionOne $PUBLICURL $ADMINURL $INTERNALURL
+	create_endpoint identity RegionOne $KEYSTONE_PUBLICURL $KEYSTONE_ADMINURL $KEYSTONE_INTERNALURL
 	
 	# Admin Project
 	create_project admin "Admin Project"
