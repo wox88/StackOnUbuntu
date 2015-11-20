@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function create_swift_endpoint {
+	create_user swift $SWIFT_PASSWORD
+	add_user_project_role swift admin admin
+	create_service swift object-store "OpenStack Object Storage"
+	create_endpoint object-store RegionOne $SWIFT_PUBLICURL $SWIFT_ADMINURL $SWIFT_INTERNALURL
+}
+
+function install_swift_proxy {
+	sudo apt-get install -y swift swift-proxy python-swiftclient python-keystoneclient python-keystonemiddleware memcached
+}
+
+function config_swift_proxy {
+	sudo mkdir -p /etc/swift
+	sudo cp $TEMPLATE_PATH/swift-proxy-server.conf /etc/swift
+}
+
+function install_swift_storage {
+	
+}
